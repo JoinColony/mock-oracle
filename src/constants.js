@@ -1,6 +1,9 @@
+import BigNumber from 'bn.js';
+
 const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
 const WEI = '1000000000000000000';
 const NETWORK = 'local';
+const BN_ZERO = new BigNumber('0').toString();
 
 const ROUTES = {
   DEFAULT: '/',
@@ -61,5 +64,6 @@ export default {
   ROUTES,
   RESPONSES,
   RESPONSE_TYPES,
-  STATUSES
+  STATUSES,
+  BN_ZERO,
 };

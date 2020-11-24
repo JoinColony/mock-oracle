@@ -1,6 +1,5 @@
 import getGanacheAccounts from './getGanacheAccounts';
 import getRandomReputation from './getRandomReputation';
-import constants from './constants';
 
 export default () => {
   const ganacheAccounts = getGanacheAccounts();
