@@ -28,9 +28,12 @@ const DEFAULT_RESPONSE = `
   </ul>
 `;
 
+const WEI = '1000000000000000000';
+
 export default {
   DEFAULT_RESPONSE,
   NULL_ADDRESS,
   NETWORK,
   ROUTES,
+  WEI,
 };

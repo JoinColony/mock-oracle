@@ -6,7 +6,7 @@ import { yellow, bold } from 'chalk';
 import { appName } from '../package.json';
 import source from '../src';
 
-const { getGanacheAccounts, envs, constants } = source;
+const { envs, constants } = source;
 const { PORT, HOST } = envs;
 const { DEFAULT_RESPONSE, ROUTES } = constants;
 const { DEFAULT, USER_REPUTATION, COLONY_TOTAL_REPUTATION, USERS_WITH_REPUTATION } = ROUTES;
@@ -27,6 +27,10 @@ export default async () => {
    * A user's reputation inside a colony
    */
   server.get(USER_REPUTATION, function (req, res) {
+    /*
+     * @NOTE We don't actually care about the root hash, just assume it's correct
+     */
+    const { colonyAddress, domainSkillId, userAddress } = req.params;
     res.send(req.params)
   })
 
@@ -34,6 +38,10 @@ export default async () => {
    * Total reputation available inside a colony
    */
   server.get(COLONY_TOTAL_REPUTATION, function (req, res) {
+    /*
+     * @NOTE We don't actually care about the root hash, just assume it's correct
+     */
+    const { colonyAddress, domainSkillId } = req.params;
     res.send(req.params)
   })
 
@@ -41,6 +49,10 @@ export default async () => {
    * All members with reputation, sorted by reputation
    */
   server.get(USERS_WITH_REPUTATION, function (req, res) {
+    /*
+     * @NOTE We don't actually care about the root hash, just assume it's correct
+     */
+    const { colonyAddress, domainSkillId } = req.params;
     res.send(req.params)
   })
 
