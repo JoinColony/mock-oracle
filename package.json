@@ -1,0 +1,28 @@
+{
+  "name": "mock-reputation-miner",
+  "version": "1.0.0-alpha.0",
+  "description": "A raw version of the colonyNetwork's reputation miner, used for local dapp testing",
+  "main": "bin/index.js",
+  "bin": {
+    "mock-reputation-miner": "bin/index.js"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoinColony/mock-reputation-miner.git"
+  },
+  "author": "Raul Glogovetan <raul@colony.io>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://linear.app/colony/team/DEV"
+  },
+  "homepage": "https://github.com/JoinColony/mock-reputation-miner#readme"
+}
