@@ -3,6 +3,7 @@ import envs from './envs.js';
 import constants from './constants'
 import getRandomReputation from './getRandomReputation';
 import generateReponse from './generateResponse';
+import generateReputation from './generateReputation';
 
 export default {
   envs,
@@ -10,4 +11,5 @@ export default {
   getGanacheAccounts,
   getRandomReputation,
   generateReponse,
+  generateReputation,
 };
