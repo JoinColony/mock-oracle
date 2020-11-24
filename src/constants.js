@@ -5,8 +5,8 @@ const NETWORK = 'local';
 const ROUTES = {
   DEFAULT: '/',
   USER_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/:userAddress`,
-  // COLONY_TOTAL_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/${NULL_ADDRESS}`,
-  USERS_WITH_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId`,
+  COLONY_TOTAL_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/${NULL_ADDRESS}`,
+  MEMBERS_WITH_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId`,
 };
 
 const DEFAULT_RESPONSE = `
@@ -23,7 +23,7 @@ const DEFAULT_RESPONSE = `
     </li>
     <li>
       <p><b>Fetch all users who have reputation in a colony, sorted by the reputation amount:</b></p>
-      <pre>${ROUTES.USERS_WITH_REPUTATION}</pre>
+      <pre>${ROUTES.MEMBERS_WITH_REPUTATION}</pre>
     </li>
   </ul>
 `;
@@ -43,6 +43,12 @@ const RESPONSES = {
   }
 };
 
+const RESPONSE_TYPES = {
+  USER_REPUTATION: 'user_reputation',
+  TOTAL_REPUTATION: 'total_reputation',
+  MEMBERS_WITH_REPUTATION: 'members_with_reputation',
+};
+
 const STATUSES = {
   OK: 200,
   INTERNAL_SERVER_ERROR: 500,
@@ -54,5 +60,6 @@ export default {
   NETWORK,
   ROUTES,
   RESPONSES,
+  RESPONSE_TYPES,
   STATUSES
 };

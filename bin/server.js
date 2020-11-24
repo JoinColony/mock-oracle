@@ -2,14 +2,18 @@ import express from 'express';
 import { json } from 'body-parser';
 import cors from 'cors';
 import { yellow, bold } from 'chalk';
+import { isAddress } from 'web3-utils';
 
 import { appName } from '../package.json';
 import source from '../src';
 
-const { envs, constants } = source;
+const { envs, constants, generateReponse } = source;
 const { PORT, HOST } = envs;
-const { DEFAULT_RESPONSE, ROUTES } = constants;
-const { DEFAULT, USER_REPUTATION, COLONY_TOTAL_REPUTATION, USERS_WITH_REPUTATION } = ROUTES;
+const { RESPONSES, ROUTES, STATUSES, NULL_ADDRESS, RESPONSE_TYPES } = constants;
+const { DEFAULT, USER_REPUTATION: USER_REPUTATION_ROUTE, MEMBERS_WITH_REPUTATION: MEMBERS_WITH_REPUTATION_ROUTE } = ROUTES;
+const { DEFAULT: DEFAULT_RESPONSE, ADDRESS_INVALID } = RESPONSES;
+const { OK, INTERNAL_SERVER_ERROR } = STATUSES;
+const { USER_REPUTATION, TOTAL_REPUTATION, MEMBERS_WITH_REPUTATION } = RESPONSE_TYPES;
 
 export default async () => {
   const server = express();
@@ -23,37 +27,41 @@ export default async () => {
     res.send(DEFAULT_RESPONSE);
   })
 
-  /*
-   * A user's reputation inside a colony
-   */
-  server.get(USER_REPUTATION, function (req, res) {
+  server.get(USER_REPUTATION_ROUTE, function (req, res) {
     /*
-     * @NOTE We don't actually care about the root hash, just assume it's correct
+     * @NOTE We don't actually care about the root hash, or colony address, just assume it's correct
      */
-    const { colonyAddress, domainSkillId, userAddress } = req.params;
-    res.send(req.params)
-  })
-
-  /*
-   * Total reputation available inside a colony
-   */
-  server.get(COLONY_TOTAL_REPUTATION, function (req, res) {
+    const { domainSkillId, userAddress } = req.params;
+    if (!isAddress(userAddress)) {
+      return res.status(INTERNAL_SERVER_ERROR).send(ADDRESS_INVALID);
+    }
     /*
-     * @NOTE We don't actually care about the root hash, just assume it's correct
+     * Total reputation available inside a colony
      */
-    const { colonyAddress, domainSkillId } = req.params;
-    res.send(req.params)
+    if (userAddress === NULL_ADDRESS) {
+      return res.status(OK).send(
+        generateReponse(userAddress, domainSkillId, TOTAL_REPUTATION),
+      );
+    }
+    /*
+     * A user's reputation inside a colony
+     */
+    return res.status(OK).send(
+      generateReponse(userAddress, domainSkillId, USER_REPUTATION),
+    );
   })
 
   /*
    * All members with reputation, sorted by reputation
    */
-  server.get(USERS_WITH_REPUTATION, function (req, res) {
+  server.get(MEMBERS_WITH_REPUTATION_ROUTE, function (req, res) {
     /*
-     * @NOTE We don't actually care about the root hash, just assume it's correct
+     * @NOTE We don't actually care about the root hash, or colony address, just assume it's correct
      */
-    const { colonyAddress, domainSkillId } = req.params;
-    res.send(req.params)
+    const { domainSkillId } = req.params;
+    return res.status(OK).send(
+      generateReponse(undefined, domainSkillId, MEMBERS_WITH_REPUTATION),
+    );
   })
 
   server.listen(PORT, HOST, () => {
