@@ -3,7 +3,7 @@ import BigNumber from 'bn.js';
 import constants from './constants';
 
 const { RESPONSES, RESPONSE_TYPES, BN_ZERO } = constants;
-const { REPUTATION } = RESPONSES;
+const { REPUTATION, SORTED_MEMBERS } = RESPONSES;
 
 export default (totalReputation, userAddress, responseType) => {
   switch (responseType) {
@@ -22,6 +22,17 @@ export default (totalReputation, userAddress, responseType) => {
         reputationAmount: totalReputationAmount.toString() || BN_ZERO,
       });
     case RESPONSE_TYPES.MEMBERS_WITH_REPUTATION:
+      const sortReputation = (firstAddress, secondAddress) => {
+        const firstValue = new BigNumber(totalReputation[firstAddress]);
+        const secondValue = new BigNumber(totalReputation[secondAddress]);
+        return firstValue.cmp(secondValue)
+      };
+      const membersByReputation =
+        Object.keys(totalReputation).sort(sortReputation).reverse();
+      return JSON.stringify({
+        ...SORTED_MEMBERS,
+        addresses: membersByReputation,
+      });
     default:
       return '';
   }
