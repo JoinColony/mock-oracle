@@ -1,11 +1,11 @@
 const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
-
+const WEI = '1000000000000000000';
 const NETWORK = 'local';
 
 const ROUTES = {
   DEFAULT: '/',
   USER_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/:userAddress`,
-  COLONY_TOTAL_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/${NULL_ADDRESS}`,
+  // COLONY_TOTAL_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId/${NULL_ADDRESS}`,
   USERS_WITH_REPUTATION: `/reputation/${NETWORK}/:rootHash/:colonyAddress/:domainSkillId`,
 };
 
@@ -28,12 +28,31 @@ const DEFAULT_RESPONSE = `
   </ul>
 `;
 
-const WEI = '1000000000000000000';
+const RESPONSES = {
+  DEFAULT: DEFAULT_RESPONSE,
+  ADDRESS_INVALID: 'Please specify a valid user address',
+  REPUTATION: {
+    branchMask: '0x0',
+    siblings: ['0x0', '0x0'],
+    key: '0x0',
+    value: '0x0',
+    reputationAmount: '0',
+  },
+  SORTED_MEMBERS: {
+    addresses: [],
+  }
+};
+
+const STATUSES = {
+  OK: 200,
+  INTERNAL_SERVER_ERROR: 500,
+};
 
 export default {
-  DEFAULT_RESPONSE,
   NULL_ADDRESS,
+  WEI,
   NETWORK,
   ROUTES,
-  WEI,
+  RESPONSES,
+  STATUSES
 };
