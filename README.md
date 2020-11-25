@@ -1,8 +1,8 @@
-# Mock Reputation Miner
+# Mock Oracle
 
 A raw version of the [colonyNetwork](https://github.com/JoinColony/colonyNetwork)'s [reputation miner](https://github.com/JoinColony/colonyNetwork/tree/develop/packages/reputation-miner), used for local [dapp](https://github.com/JoinColony/colonyDapp) testing
 
-A rough outline of this is working, is that it takes the avaible `ganache-accounts` from the file generated when `ganache` starts and mocks reputation for each one.
+A rough outline of this is working, is that it takes the available `ganache-accounts` from the file generated when `ganache` starts and mocks reputation for each one.
 
 This is done to keep this pretty independent and not needing it to be havily integrated with either the server or the network.
 
@@ -10,7 +10,7 @@ So to actually use this, you **need** to use the provided ganache accounts when 
 
 ### Getting started
 
-![Mock Reputation Miner Server Started](.assets/server-started.png)
+![Mock Oracle Server Started](.assets/server-started.png)
 
 Make sure you are using the correct `node` version:
 ```bash
