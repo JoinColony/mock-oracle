@@ -1,4 +1,5 @@
 import BigNumber from 'bn.js';
+import { appName } from '../package.json';
 
 const NULL_ADDRESS = '0x0000000000000000000000000000000000000000';
 const WEI = '1000000000000000000';
@@ -13,7 +14,7 @@ const ROUTES = {
 };
 
 const DEFAULT_RESPONSE = `
-  <h1>Mock Reputation Miner Server</h1>
+  <h1>${appName} Server</h1>
   <p>Please use one the require request paths to query your desired reputation</p>
   <ul>
     <li>

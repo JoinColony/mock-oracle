@@ -1,11 +1,11 @@
 {
-  "name": "mock-reputation-miner",
-  "appName": "Mock Reputation Miner",
+  "name": "mock-oracle",
+  "appName": "Mock Oracle",
   "version": "1.0.0-alpha.0",
-  "description": "A raw version of the colonyNetwork's reputation miner, used for local dapp testing",
+  "description": "A raw version of the colonyNetwork's oracle, used for local dapp testing",
   "main": "bin/index.js",
   "bin": {
-    "mock-reputation-miner": "bin/index.js"
+    "mock-oracle": "bin/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.8",
@@ -26,12 +26,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoinColony/mock-reputation-miner.git"
+    "url": "git+https://github.com/JoinColony/mock-oracle.git"
   },
   "author": "Raul Glogovetan <raul@colony.io>",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://linear.app/colony/team/DEV"
-  },
-  "homepage": "https://github.com/JoinColony/mock-reputation-miner#readme"
+  "homepage": "https://github.com/JoinColony/mock-oracle#readme"
 }
