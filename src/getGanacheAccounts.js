@@ -1,5 +1,7 @@
 import fs from 'fs';
 import { resolve } from 'path';
+import { toChecksumAddress } from 'web3-utils';
+
 import envs from './envs';
 
 const { GANACHE_ACCOUNTS_PATH } = envs;
@@ -16,13 +18,17 @@ export default () => {
     }
 
     const ganacheAccountsFile = require(ganacheAccountsPath);
-    return Object.keys(ganacheAccountsFile.private_keys);
+    return Object
+      .keys(ganacheAccountsFile.private_keys)
+      // Checksum addresses
+      .map(toChecksumAddress);
 
   } catch {
 
     console.error('Cannot find ganache accounts file')
 
     const ganacheAccountsFallback = require('./staticAccounts.json');
-    return ganacheAccountsFallback;
+    // Checksum fallback addresses as well
+    return ganacheAccountsFallback.map(toChecksumAddress);
   }
 }
