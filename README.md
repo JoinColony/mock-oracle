@@ -10,7 +10,7 @@ So to actually use this, you **need** to use the provided ganache accounts when 
 
 ### Getting started
 
-![Mock Oracle Server Started](.assets/server-started.png)
+![Mock Oracle Server Started](.assets/server-started-renamed.png)
 
 Make sure you are using the correct `node` version:
 ```bash
@@ -45,19 +45,19 @@ npm start
 
 _Note that for the purpouses of this mock server, `rootHash`, `colonyAddress` or `domainSkillId` are not actually checked for their validity_
 
-![Fetch a user's reputation](.assets/user-reputation.png)
+![Fetch a user's reputation](.assets/user-reputation-renamed.png)
 
 **Fetch the total reputation available** in the colony by querying the endpoint: `/reputation/local/<rootHash>/<colonyAddress>/<domainSkillId>/0x0000000000000000000000000000000000000000`
 
 _Note that for the purpouses of this mock server, `rootHash`, `colonyAddress` or `domainSkillId` are not actually checked for their validity_
 
-![Fetch a user's reputation](.assets/total-reputation.png)
+![Fetch a user's reputation](.assets/total-reputation-renamed.png)
 
 **Fetch colony members sorted by reputation** by querying the endpoint: `/reputation/local/<rootHash>/<colonyAddress>/<domainSkillId>`
 
 _Note that for the purpouses of this mock server, `rootHash`, `colonyAddress` or `domainSkillId` are not actually checked for their validity_
 
-![Fetch a user's reputation](.assets/members-with-reputation.png)
+![Fetch a user's reputation](.assets/members-with-reputation-renamed.png)
 
 ### Limitations
 
